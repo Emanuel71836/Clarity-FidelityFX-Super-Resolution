@@ -80,7 +80,11 @@ void FSR2Sample::OnParseCommandLine(LPSTR lpCmdLine, uint32_t* pWidth, uint32_t*
     // read config file
     //
     {
+<<<<<<< HEAD
         std::ifstream f("FSR_Clarity.json");
+=======
+        std::ifstream f("FSR2_Sample.json");
+>>>>>>> 1680d1edd5c034f88ebbbb793d8b88f8842cf804
         if (!f)
         {
             MessageBox(NULL, "Config file not found!\n", "Cauldron Panic!", MB_ICONERROR);
@@ -774,7 +778,11 @@ int WINAPI WinMain(HINSTANCE hInstance,
     LPSTR lpCmdLine,
     int nCmdShow)
 {
+<<<<<<< HEAD
     LPCSTR Name = "FSR Clarity";
+=======
+    LPCSTR Name = "FidelityFX Super Resolution 2.2";
+>>>>>>> 1680d1edd5c034f88ebbbb793d8b88f8842cf804
 
     // create new DX sample
     return RunFramework(hInstance, lpCmdLine, nCmdShow, new FSR2Sample(Name));

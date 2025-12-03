@@ -12,10 +12,39 @@ if %errorlevel% NEQ 0 (
     echo    CMake      - Ready.
 ) 
 
+<<<<<<< HEAD
 :: Cauldron check skipped for FSR 4.0 standalone build
 :: if not exist ..\libs\cauldron\common.cmake (
 ::    ...
 :: )
+=======
+:: Check if submodule is initialized (first time) to avoid CMake file not found errors
+if not exist ..\libs\cauldron\common.cmake (
+    echo File: common.cmake  doesn't exist in '.\libs\cauldron\'  -  Initializing submodule... 
+
+    :: attempt to initialize submodule
+    cd ..
+    echo.
+    git submodule sync --recursive
+    git submodule update --init --recursive
+    cd build 
+
+
+    :: check if submodule initialized properly
+    if not exist ..\libs\cauldron\common.cmake (
+        echo.
+        echo '..\libs\cauldron\common.cmake is still not there.'
+        echo Could not initialize submodule. Make sure all the submodules are initialized and updated.
+        echo Exiting...
+        echo.
+        exit /b -1 
+    ) else (
+        echo    Cauldron   - Ready.
+    )
+) else (
+    echo    Cauldron   - Ready.
+)
+>>>>>>> 1680d1edd5c034f88ebbbb793d8b88f8842cf804
 
 :: Check if VULKAN_SDK is installed but don't bail out
 if "%VULKAN_SDK%"=="" (

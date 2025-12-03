@@ -138,6 +138,7 @@ add_dependencies(copied_dx12_shaders_fsr2_src copied_dx12_shaders_fsr1_src)
 copyCommand("${particle_shaders_src}" ${CMAKE_HOME_DIRECTORY}/bin/ShaderLibDX)
 copyCommand("${sample_shaders_src}" ${CMAKE_HOME_DIRECTORY}/bin/ShaderLibDX)
 
+<<<<<<< HEAD
 add_executable(FSR_Clarity_DX12 WIN32 ${sources} ${fsr2_src} ${sample_shaders_src} ${fsr1_shaders_src} ${fsr2_shaders_src} ${particle_shaders_src} ${spd_shaders_src} ${common} ${APP_ICON_GPUOPEN})
 target_compile_definitions(FSR_Clarity_DX12 PRIVATE USE_PIX=1 $<$<CONFIG:RelWithDebInfo>:FSR2_DEBUG_SHADERS=1>)
 target_link_libraries(FSR_Clarity_DX12 LINK_PUBLIC FSR_Clarity_Common Cauldron_DX12 ImGUI amd_ags d3dcompiler D3D12 ffx_fsr2_api_x64 ffx_fsr2_api_dx12_x64)
@@ -146,4 +147,14 @@ target_link_directories(FSR_Clarity_DX12 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../.
 add_dependencies(FSR_Clarity_DX12 copied_dx12_shaders_fsr2_src)
 
 set_target_properties(FSR_Clarity_DX12 PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_HOME_DIRECTORY}/bin" DEBUG_POSTFIX "d")
+=======
+add_executable(FSR2_Sample_DX12 WIN32 ${sources} ${fsr2_src} ${sample_shaders_src} ${fsr1_shaders_src} ${fsr2_shaders_src} ${particle_shaders_src} ${spd_shaders_src} ${common} ${APP_ICON_GPUOPEN})
+target_compile_definitions(FSR2_Sample_DX12 PRIVATE USE_PIX=1 $<$<CONFIG:RelWithDebInfo>:FSR2_DEBUG_SHADERS=1>)
+target_link_libraries(FSR2_Sample_DX12 LINK_PUBLIC FSR2_Sample_Common Cauldron_DX12 ImGUI amd_ags d3dcompiler D3D12 ffx_fsr2_api_x64 ffx_fsr2_api_dx12_x64)
+target_include_directories(FSR2_Sample_DX12 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../ffx-fsr2-api ${CMAKE_CURRENT_SOURCE_DIR}/../../libs)
+target_link_directories(FSR2_Sample_DX12 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../../libs)
+add_dependencies(FSR2_Sample_DX12 copied_dx12_shaders_fsr2_src)
+
+set_target_properties(FSR2_Sample_DX12 PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_HOME_DIRECTORY}/bin" DEBUG_POSTFIX "d")
+>>>>>>> 1680d1edd5c034f88ebbbb793d8b88f8842cf804
 #set_source_files_properties(${sample_shaders_src} PROPERTIES VS_TOOL_OVERRIDE "Text")
